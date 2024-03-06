@@ -1,0 +1,8 @@
+- docker-compose funcional | makefile
+- nginx conf
+- nginx protocol
+- nginx comunication
+- 
+
+- ver params del openssl para generar certificados
+- ver volumenes docker

@@ -5,3 +5,7 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8080:443"
+        #    volumes:
+        #- "$PWD/myvol:/kajuto"
+    env_file:
+      - ./.env
