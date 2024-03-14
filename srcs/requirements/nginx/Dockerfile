@@ -3,7 +3,7 @@
 FROM debian:bookworm
 
 #Get dependencies for container
-RUN apt-get update && apt-get upgrade && apt-get install vim -y && apt-get install net-tools -y && apt-get install nginx -y && apt-get install openssl -y 
+RUN apt-get update && apt-get upgrade && apt-get install vim -y && apt-get install net-tools -y && apt-get install nginx -y && apt-get install openssl -y && apt-get install telnet -y && apt-get install net-tools -y
 
 #Set workdir
 WORKDIR .
@@ -21,13 +21,11 @@ COPY ./tools/nginx.sh /usr/bin/
 COPY ./tools/myNginx.conf /etc/nginx/conf.d/
 
 #Expose necessary ports
-EXPOSE 443/tcp
 
-#RUN chmod +x /usr/bin/nginx.sh
 RUN mkdir /etc/nginx/ssl
-RUN mkdir /kajuto
-#VOLUME /etc/nginx
+RUN mkdir /volumo
 RUN chmod 700 /etc/nginx/ssl
+RUN echo "#This file is not the original nginx file, it has been removed for custom needs" > /etc/nginx/sites-enabled/default
 
 
 
@@ -39,9 +37,11 @@ RUN openssl req -newkey rsa:2048 -nodes -keyout $KEY -out $CSR -subj "/C=/ST=/L=
 #Sign the cert
 RUN openssl x509 -req -in $CSR -signkey $KEY -out $SSLPATH/myserver.crt
 
+#RUN cat /volumo/myNginx.conf > /etc/nginx/conf.d/myNginx.conf
 
 #RUN chmod 644 /myNginx.conf
 #RUN /myNginx.conf > /etc/nginx/nginx.conf
 
 #ENTRYPOINT ["/usr/bin/nginx.sh"]
-CMD ["/bin/bash"]
+#CMD ["tail", "-f"]
+ENTRYPOINT tail -f

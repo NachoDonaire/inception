@@ -1,11 +1,45 @@
 services:
   nginx:
+    user: root
     build: 
       context: ./requirements/nginx/.
       dockerfile: Dockerfile
+    image: nginx
     ports:
-      - "8080:443"
+      - "443:443"
         #    volumes:
         #- "$PWD/myvol:/kajuto"
     env_file:
-      - ./.env
+      - .env
+    volumes:
+      - $PWD/vol:/volumo
+    networks:
+      - networng
+
+  wordpress:
+    build: 
+      context: ./requirements/wordpress/.
+      dockerfile: Dockerfile
+    image: wordpress
+    networks:
+      - networng
+    env_file:
+      - .env
+    volumes:
+      #- /home/$USER/wordpress:/volume
+      - $PWD/vol:/volume
+    ports:
+      - "9000:9000"
+
+volumes:
+  wordpress:
+    driver_opts:
+      type: none
+      device: /home/nkustoner/wordpress
+networks:
+  networng:
+    ipam:
+      config:
+        - subnet: 172.18.0.0/24
+    driver: "bridge"
+   
