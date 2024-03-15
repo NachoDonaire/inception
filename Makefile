@@ -23,8 +23,11 @@ rmallctnr:
 	docker container rm $$(docker container ls -aq)
 rmallvol:
 	docker volume rm $$(docker volume ls -q)
-rights:
-	namei -om .
 
 reset: rmallctnr rmallvol
 
+
+nginx:
+	docker exec -it srcs_nginx_1 /bin/bash
+wordpress:
+	docker exec -it srcs_wordpress_1 /bin/bash

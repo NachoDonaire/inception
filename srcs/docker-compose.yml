@@ -7,12 +7,10 @@ services:
     image: nginx
     ports:
       - "443:443"
-        #    volumes:
-        #- "$PWD/myvol:/kajuto"
     env_file:
       - .env
     volumes:
-      - $PWD/vol:/volumo
+      - $PWD/volNginx:/etc/nginx/conf.d
     networks:
       - networng
 
@@ -27,7 +25,7 @@ services:
       - .env
     volumes:
       #- /home/$USER/wordpress:/volume
-      - $PWD/vol:/volume
+      - $PWD/volWordpress:/volume
     ports:
       - "9000:9000"
 

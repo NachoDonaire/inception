@@ -1,8 +1,18 @@
-- docker-compose funcional | makefile
-- nginx conf
-- nginx protocol
-- nginx comunication
+- docker-compose funcional | makefile (ok)
+- nginx conf (ok pero con prestacion a cambios)
+- nginx protocol (TLSv1.2 y/o la 3 --> ver)
+- nginx comunication (ooookkkkk)
 - 
 
-- ver params del openssl para generar certificados
-- ver volumenes docker
+- ver params del openssl para generar certificados (ok)
+- ver volumenes docker (~ok)
+
+- $uri $variables nginxconf (ok)
+- proxy serv nginx (descartado --> fastcgi)
+
+- ver que buildea con el dockerfile de wordpress (ok y quitado el expose)
+
+- sudo -u en dockerfile de wordpress al descomprimir wordpress (ok)
+
+- php-fpm conf (pseudook)
+- wordpress.conf

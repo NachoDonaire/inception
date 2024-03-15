@@ -1,6 +1,6 @@
 
 #Get debian from repositories
-FROM debian:bookworm
+FROM debian:bullseye
 
 #Get dependencies for container
 RUN apt-get update && apt-get upgrade && apt-get install vim -y && apt-get install net-tools -y && apt-get install nginx -y && apt-get install openssl -y && apt-get install telnet -y && apt-get install net-tools -y
@@ -17,8 +17,8 @@ ENV SSLPATH="/etc/nginx/ssl" \
 
 
 #Copy some stuff
-COPY ./tools/nginx.sh /usr/bin/
-COPY ./tools/myNginx.conf /etc/nginx/conf.d/
+#COPY ./tools/nginx.sh /usr/bin/
+#COPY ./tools/myNginx.conf /etc/nginx/conf.d/
 
 #Expose necessary ports
 
