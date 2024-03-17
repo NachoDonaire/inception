@@ -31,3 +31,5 @@ nginx:
 	docker exec -it srcs_nginx_1 /bin/bash
 wordpress:
 	docker exec -it srcs_wordpress_1 /bin/bash
+mariadb:
+	docker exec -it srcs_mariadb_1 /bin/bash

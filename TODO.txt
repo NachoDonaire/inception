@@ -16,3 +16,6 @@
 
 - php-fpm conf (pseudook)
 - wordpress.conf
+
+- mmirar si service servicio start se puede lanzar bloqueante
+- crear scripts y acicalar proyecto

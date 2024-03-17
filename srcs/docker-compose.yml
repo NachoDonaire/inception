@@ -29,6 +29,16 @@ services:
     ports:
       - "9000:9000"
 
+  mariadb:
+    build:
+      context: ./requirements/wordpress/.
+      dockerfile: Dockerfile
+    image: mariadb
+    networks:
+      - networng
+    env_file:
+      - .env
+
 volumes:
   wordpress:
     driver_opts:

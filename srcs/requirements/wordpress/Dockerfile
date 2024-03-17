@@ -13,10 +13,8 @@ RUN useradd php-user
 
 COPY ./tools/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
-CMD ["service php7.4-fpm","start"]
+#CMD ["service php7.4-fpm","start"]
 
 
-EXPOSE 9000
-
-
-ENTRYPOINT tail -f
+ENTRYPOINT ["/usr/sbin/php-fpm7.4"]
+#ENTRYPOINT ["tail", "-f"]
