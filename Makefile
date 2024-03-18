@@ -28,8 +28,8 @@ reset: rmallctnr rmallvol
 
 
 nginx:
-	docker exec -it srcs_nginx_1 /bin/bash
+	docker exec -it nginx_container /bin/bash
 wordpress:
-	docker exec -it srcs_wordpress_1 /bin/bash
+	docker exec -it wordpress_container /bin/bash
 mariadb:
-	docker exec -it srcs_mariadb_1 /bin/bash
+	docker exec -it mariadb_container /bin/bash

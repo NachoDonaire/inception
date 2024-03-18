@@ -19,9 +19,9 @@ WORKDIR .
 #Copy some stuff
 COPY ./tools/nginx.sh /usr/bin/
 RUN chmod +x /usr/bin/nginx.sh
-COPY ./tools/myNginx.conf /etc/nginx/nginx.conf
+#COPY ./tools/myNginx.conf /etc/nginx/nginx.conf
 
-#Expose necessary ports
+RUN useradd ndonaire
 
 RUN mkdir /volumo
 RUN echo "#This file is not the original nginx file, it has been removed for custom needs" > /etc/nginx/sites-enabled/default
