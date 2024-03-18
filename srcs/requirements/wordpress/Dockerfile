@@ -9,12 +9,13 @@ RUN mkdir -p /srv/www && chown www-data: /srv/www && curl https://wordpress.org/
 
 RUN mkdir /volume
 
-RUN useradd php-user
+RUN useradd ndonaire
 
 COPY ./tools/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY ./tools/wp.sh /usr/bin/wp.sh
 
-#CMD ["service php7.4-fpm","start"]
+RUN chmod +x /usr/bin/wp.sh
 
 
-ENTRYPOINT ["/usr/sbin/php-fpm7.4"]
+ENTRYPOINT ["/usr/bin/wp.sh"]
 #ENTRYPOINT ["tail", "-f"]
