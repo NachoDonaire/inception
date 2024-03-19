@@ -27,7 +27,7 @@ services:
       - .env
     volumes:
       #- /home/$USER/wordpress:/volume
-      - $PWD/volWordpress:/volume
+      - $PWD/wpvol:/var/www/html
     ports:
       - "9000:9000"
 

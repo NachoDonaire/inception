@@ -48,8 +48,9 @@ http {
 	        ssl_certificate_key /etc/nginx/ssl/myserver.key;
 		ssl_protocols TLSv1.3;
 
-		root /srv/www/wordpress/;
-		index index.php;
+		#root /var/www/html/;
+		root /srv/www/wordpress;
+		index index.php index.html;
 
 		location / {
 			try_files $uri $uri/ /index.php?$args;
@@ -71,5 +72,6 @@ http {
 
 
 
-#nginx -g "daemon off;"
-tail -f
+nginx -g "daemon off;"
+#tail -f
+

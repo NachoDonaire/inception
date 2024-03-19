@@ -1,16 +1,9 @@
 
 
 build:
-	docker-compose -f ./srcs/docker-compose.yml up --build
+	docker-compose -f ./srcs/docker-compose.yml up --build -d
 	#docker build -t $(IMAGE) ./srcs/requirements/nginx/.
 
-buildb:
-	docker-compose -f ./srcs/docker-compose.yml up -d
-runvol:
-	docker run -p 443:443 -v /home/nkustoner/incepttione/myvol:/holi -it srcs_nginx /bin/bash
-run:
-	docker run -p 443:443 -it nginx /bin/bash
-#	docker-compose -f ./srcs/docker-compose.yml run nginx
 
 ps:
 	docker-compose -f srcs/docker-compose.yml ps
@@ -27,6 +20,7 @@ rmallvol:
 reset: rmallctnr rmallvol
 
 
+re: down build
 nginx:
 	docker exec -it nginx_container /bin/bash
 wordpress:

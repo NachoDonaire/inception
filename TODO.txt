@@ -1,6 +1,6 @@
 - docker-compose funcional | makefile (ok)
 - nginx conf (ok pero con prestacion a cambios)
-- nginx protocol (TLSv1.2 y/o la 3 --> ver)
+- nginx protocol (TLSv1.2 y/o la 3 --> ver) (oki)
 - nginx comunication (ooookkkkk)
 - 
 
@@ -8,14 +8,23 @@
 - ver volumenes docker (~ok)
 
 - $uri $variables nginxconf (ok)
-- proxy serv nginx (descartado --> fastcgi)
+- proxy serv nginx (descartado --> fastcgi) (ok!)
 
 - ver que buildea con el dockerfile de wordpress (ok y quitado el expose)
 
 - sudo -u en dockerfile de wordpress al descomprimir wordpress (ok)
 
 - php-fpm conf (pseudook)
-- wordpress.conf
+- wordpress.conf (~ok)
 
-- mmirar si service servicio start se puede lanzar bloqueante
-- crear scripts y acicalar proyecto
+- mmirar si service servicio start se puede lanzar bloqueante (ok)
+- crear scripts y acicalar proyecto (pseudook)
+
+
+- php.ini descomentar extension=mysqlnd (ok)
+
+- volumenes, tema volumenes
+
+- cargar index.html
+
+- ES PORQUE ES VOLUMEN, como c*** apunto al volumen de forma fructifera
