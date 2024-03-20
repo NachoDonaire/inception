@@ -33,7 +33,7 @@ services:
 
   mariadb:
     build:
-      context: ./requirements/wordpress/.
+      context: ./requirements/mariadb/.
       dockerfile: Dockerfile
     image: mariadb
     container_name: mariadb_container

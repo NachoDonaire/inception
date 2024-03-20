@@ -10,16 +10,16 @@ sed -i "s/;extension=pdo_mysql/extension=pdo_mysql/g" etc/php/7.4/fpm/php.ini
 
 echo "<?php" > /srv/www/wordpress/wp-config.php
 
-echo "define( 'DB_NAME', $WORDPRESS_DB_NAME );
+echo "define( 'DB_NAME', '""$WORDPRESS_DB_NAME""' );
 
 /** Database username */
-define( 'DB_USER', $WORDPRESS_DB_USER );
+define( 'DB_USER', '""$WORDPRESS_DB_USER""' );
 
 /** Database password */
-define( 'DB_PASSWORD', $WORDPRESS_DB_PASSWORD );
+define( 'DB_PASSWORD', '""$WORDPRESS_DB_PASSWORD'"" );
 
 /** Database hostname */
-define( 'DB_HOST', mariadb_container );
+define( 'DB_HOST', 'mariadb_container');
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );
@@ -36,7 +36,7 @@ define( 'SECURE_AUTH_SALT', 'yaketuke' );
 define( 'LOGGED_IN_SALT',   'yaketuke' );
 define( 'NONCE_SALT',       'yaketuke' );
 
-$table_prefix = 'wp_';
+"'$table_prefix'" = 'wp_';
 
 define( 'WP_DEBUG', false );
 

@@ -6,6 +6,7 @@ WORKDIR .
 
 
 RUN useradd ndonaire
+RUN useradd nkush
 
 RUN mkdir -p /srv/www && chown ndonaire: /srv/www && curl https://wordpress.org/latest.tar.gz | tar zx -C /srv/www
 

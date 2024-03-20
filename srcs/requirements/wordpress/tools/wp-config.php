@@ -25,7 +25,7 @@ define( 'SECURE_AUTH_SALT', 'yaketuke' );
 define( 'LOGGED_IN_SALT',   'yaketuke' );
 define( 'NONCE_SALT',       'yaketuke' );
 
-$table_prefix = 'wp_';
+'$table_prefix' = 'wp_';
 
 define( 'WP_DEBUG', false );
 
