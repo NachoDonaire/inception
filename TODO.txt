@@ -28,3 +28,7 @@
 - cargar index.html
 
 - ES PORQUE ES VOLUMEN, como c*** apunto al volumen de forma fructifera
+
+- ver como indirigir de forma satisfatoria a mariadb y mantenerlo iniciado
+
+- Comienzo del fin | volumenes
