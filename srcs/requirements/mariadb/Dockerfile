@@ -4,12 +4,12 @@ RUN apt-get update && apt-get upgrade && apt-get install telnet -y && apt-get in
 
 WORKDIR .
 
-COPY ./tools/mariadb.sh /usr/sbin/mariadb.sh
+COPY ./tools/mariadb.sh /usr/bin/mariadb.sh
 COPY ./tools/server.conf etc/mysql/mariadb.conf.d/50-server.cnf
 
 #COPY ./tools/mdb.init /mdb.init
 
-RUN chmod +x /usr/sbin/mariadb.sh
+RUN chmod +x /usr/bin/mariadb.sh
 
 RUN mkdir -p /var/run/mysqld
 
@@ -17,6 +17,6 @@ RUN useradd ndonaire
 RUN useradd nkush
 #RUN chmod +x /mdb.init
 
-ENTRYPOINT ["/usr/sbin/mariadb.sh"]
-CMD ["mysqld", "--bind-address=0.0.0.0"]
-ENTRYPOINT tail -f
+ENTRYPOINT ["./usr/bin/mariadb.sh"]
+#CMD ["mysqld", "--bind-address=0.0.0.0"]
+#ENTRYPOINT tail -f
