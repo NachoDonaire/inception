@@ -51,6 +51,7 @@ require_once ABSPATH . 'wp-settings.php';" >> /srv/www/wordpress/wp-config.php
 
 
 
+#mv  /srv/www/wordpress/* /var/www/html/
 
 
 /usr/sbin/php-fpm7.4 -F

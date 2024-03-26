@@ -11,7 +11,7 @@ services:
     env_file:
       - .env
     volumes:
-      - $PWD/volNginx:/etc/nginx/conf.d
+      - wordpress:/var/www/html
     networks:
       - networng
 
@@ -27,7 +27,7 @@ services:
       - .env
     volumes:
       #- /home/$USER/wordpress:/volume
-      - $PWD/wpvol:/var/www/html
+      - wordpress:/var/www/html
     ports:
       - "9000:9000"
 
@@ -44,9 +44,9 @@ services:
 
 volumes:
   wordpress:
-    driver_opts:
-      type: none
-      device: /home/nkustoner/wordpress
+    #driver_opts:
+      #type: none
+      #device: /home/nkustoner/wordpress
 networks:
   networng:
     ipam:
