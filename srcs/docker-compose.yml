@@ -14,6 +14,8 @@ services:
       - nwvol:/var/www/html
     networks:
       - networng
+    depends_on: 
+      - wordpress
 
   wordpress:
     build: 
@@ -30,6 +32,8 @@ services:
       - nwvol:/var/www/html
     ports:
       - "9000:9000"
+    depends_on:
+      - mariadb
 
   mariadb:
     build:
@@ -41,14 +45,23 @@ services:
       - networng
     env_file:
       - .env
+    volumes:
+      - mbvol:/var/lib/mysql
 
 volumes:
   nwvol:
     driver: local
     driver_opts:
       type: none
-      device: /home/$USER/data
+      device: /home/$USER/data/wordpress
       o: bind
+  mbvol:
+    driver: local
+    driver_opts:
+      type: none
+      device: /home/$USER/data/mariadb
+      o: bind
+
 networks:
   networng:
     ipam:

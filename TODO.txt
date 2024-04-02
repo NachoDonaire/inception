@@ -32,3 +32,6 @@
 - ver como indirigir de forma satisfatoria a mariadb y mantenerlo iniciado
 
 - Comienzo del fin | volumenes
+
+
+- check si existen archvos  en el volumen y si  no, los mueve si si, no

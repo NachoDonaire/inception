@@ -49,9 +49,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once ABSPATH . 'wp-settings.php';" >> /srv/www/wordpress/wp-config.php
 
+files=$(ls /var/www/html)
 
 
-#mv  /srv/www/wordpress/* /var/www/html/
+if [ -d "$files" ]; then
+	mv  /srv/www/wordpress/* /var/www/html/
+fi
 
 
 /usr/sbin/php-fpm7.4 -F
