@@ -48,7 +48,7 @@ http {
 	        ssl_certificate_key /etc/nginx/ssl/myserver.key;
 		ssl_protocols TLSv1.3;
 
-		root /var/www/html;
+		root /var/www/html/wordpress;
 		index index.php index.html;
 
 		location / {

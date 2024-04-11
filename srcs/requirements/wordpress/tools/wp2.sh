@@ -1,6 +1,6 @@
 #! /bin/bash
 
-set -e
+#set -e
 
 mkdir -p /run/php
 
@@ -49,11 +49,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 require_once ABSPATH . 'wp-settings.php';" >> /srv/www/wordpress/wp-config.php
 
-files=$(ls /var/www/html)
+files=$(ls -A /var/www/html/wordpress/)
 
-
-if [ -d "$files" ]; then
-	mv  /srv/www/wordpress/* /var/www/html/
+if [ ! "$files" ]; then
+	mv  /srv/www/wordpress/* /var/www/html/wordpress/
+	su ndonaire -c "wp core install --url=ndonaire.com --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/wordpress'"
+	su ndonaire -c "wp user create ndonaire ndonaire@example.com --role=administrator --path=/var/www/html/wordpress/" > adminInfo.txt
+	su ndonaire -c "wp user create bob bob@example.com --role=administrator --path=/var/www/html/wordpress/" > userInfo.txt
 fi
 
 

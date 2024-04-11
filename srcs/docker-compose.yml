@@ -11,11 +11,12 @@ services:
     env_file:
       - .env
     volumes:
-      - nwvol:/var/www/html
+      - nwvol:/var/www/html/nginx
     networks:
       - networng
     depends_on: 
       - wordpress
+    restart: always
 
   wordpress:
     build: 
@@ -29,11 +30,12 @@ services:
       - .env
     volumes:
       #- /home/$USER/wordpress:/volume
-      - nwvol:/var/www/html
+      - nwvol:/var/www/html/wordpress
     ports:
       - "9000:9000"
     depends_on:
       - mariadb
+    restart: always
 
   mariadb:
     build:
@@ -47,6 +49,7 @@ services:
       - .env
     volumes:
       - mbvol:/var/lib/mysql
+    restart: always
 
 volumes:
   nwvol:

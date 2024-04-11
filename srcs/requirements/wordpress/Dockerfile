@@ -22,6 +22,11 @@ COPY ./tools/index.php /srv/www/wordpress/index.php
 RUN chmod +x /usr/bin/wp.sh
 #RUN chown -R root:root /var/www/html/wp-config.php
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+RUN chmod +x wp-cli.phar
+
+RUN mv wp-cli.phar /usr/local/bin/wp
 
 
 ENTRYPOINT ["/usr/bin/wp.sh"]
