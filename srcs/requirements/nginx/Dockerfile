@@ -24,7 +24,7 @@ RUN chmod +x /usr/bin/nginx.sh
 RUN useradd ndonaire
 
 RUN mkdir /volumo
-RUN echo "#This file is not the original nginx file, it has been removed for custom needs" > /etc/nginx/sites-enabled/default
+#RUN echo "#This file is not the original nginx file, it has been removed for custom needs" > /etc/nginx/sites-enabled/default
 
 
 

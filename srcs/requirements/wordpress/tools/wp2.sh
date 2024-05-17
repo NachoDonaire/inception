@@ -53,9 +53,10 @@ files=$(ls -A /var/www/html/wordpress/)
 
 if [ ! "$files" ]; then
 	mv  /srv/www/wordpress/* /var/www/html/wordpress/
-	su ndonaire -c "wp core install --url=ndonaire.com --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/wordpress'"
+	chown ndonaire /var/www/html/wordpress
+	su ndonaire -c "wp core install --url=ndonaire.42.fr --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/wordpress'"
 	su ndonaire -c "wp user create ndonaire ndonaire@example.com --role=administrator --path=/var/www/html/wordpress/" > adminInfo.txt
-	su ndonaire -c "wp user create bob bob@example.com --role=administrator --path=/var/www/html/wordpress/" > userInfo.txt
+	su ndonaire -c "wp user create bob bob@example.com --role=publisher --path=/var/www/html/wordpress/" > userInfo.txt
 fi
 
 

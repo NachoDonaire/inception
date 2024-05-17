@@ -15,7 +15,9 @@ services:
     networks:
       - networng
     depends_on: 
-      - wordpress
+      wordpress:
+        condition: service_healthy
+
     restart: always
 
   wordpress:
@@ -29,13 +31,18 @@ services:
     env_file:
       - .env
     volumes:
-      #- /home/$USER/wordpress:/volume
       - nwvol:/var/www/html/wordpress
     ports:
       - "9000:9000"
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     restart: always
+    healthcheck:
+      test: ["CMD", "wp", "core", "is-installed", "--path=/var/www/html/wordpress", "--allow-root"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 
   mariadb:
     build:
@@ -50,6 +57,12 @@ services:
     volumes:
       - mbvol:/var/lib/mysql
     restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
 
 volumes:
   nwvol:
