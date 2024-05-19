@@ -14,5 +14,5 @@ COPY ./tools/mynginx.conf /etc/nginx/nginx.conf
 
 
 
-ENTRYPOINT ["/usr/bin/nginx.sh"]
 #CMD ["tail", "-f"]
+ENTRYPOINT ["/usr/bin/nginx.sh"]
