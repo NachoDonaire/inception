@@ -4,11 +4,24 @@
 
 mkdir -p /run/php
 
-sed -i 's/mysqli.default_host =/mysqli.default_host = mariadb_container/g' etc/php/7.4/fpm/php.ini
-sed -i "s/;extension=pdo_mysql/extension=pdo_mysql/g" etc/php/7.4/fpm/php.ini
+sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 0.0.0.0:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
+ #sed -i 's/mysqli.default_host =/mysqli.default_host = mariadb_container/g' etc/php/7.4/fpm/php.ini
+#sed -i "s/;extension=pdo_mysql/extension=pdo_mysql/g" etc/php/7.4/fpm/php.ini
 
 
-echo "<?php" > /srv/www/wordpress/wp-config.php
+file="/var/www/html/wp-config.php"
+
+if [ -f "$file" ]; then
+	/usr/sbin/php-fpm7.4 -F
+	exit ;
+fi
+
+rm -rf /var/www/html/*
+
+
+wp core download --allow-root --path=/var/www/html
+
+echo "<?php" > /var/www/html/wp-config.php
 
 echo "define( 'DB_NAME', '""$WORDPRESS_DB_NAME""' );
 
@@ -47,16 +60,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', __DIR__ . '/' );
 }
 
-require_once ABSPATH . 'wp-settings.php';" >> /srv/www/wordpress/wp-config.php
+require_once ABSPATH . 'wp-settings.php';" >> /var/www/html/wp-config.php
 
-files=$(ls -A /var/www/html/wordpress/)
 
-if [ ! "$files" ]; then
-	mv  /srv/www/wordpress/* /var/www/html/wordpress/
-	su ndonaire -c "wp core install --url=ndonaire.com --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/wordpress'"
-	su ndonaire -c "wp user create ndonaire ndonaire@example.com --role=administrator --path=/var/www/html/wordpress/" > adminInfo.txt
-	su ndonaire -c "wp user create bob bob@example.com --role=administrator --path=/var/www/html/wordpress/" > userInfo.txt
-fi
+	#chown ndonaire /var/www/html/wordpress
+	#chown -R www-data:www-data /var/www/html/wordpress
+	wp core install --url=ndonaire.42.fr --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/' --allow-root
+	wp user create bob bob@example.com --role=author --path=/var/www/html/ --user_pass=cucu --allow-root > userInfo.txt
 
+#mkdir -p /run/php
 
 /usr/sbin/php-fpm7.4 -F
