@@ -18,5 +18,6 @@ RUN useradd nkush
 #RUN chmod +x /mdb.init
 
 ENTRYPOINT ["./usr/bin/mariadb.sh"]
+#ENTRYPOINT ["tail", "-f"]
 #CMD ["mysqld", "--bind-address=0.0.0.0"]
 #ENTRYPOINT tail -f
