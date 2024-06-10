@@ -10,9 +10,7 @@ WORKDIR .
 
 
 
- #COPY ./tools/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY ./tools/wp2.sh /usr/bin/wp.sh
-#COPY ./tools/index.php /srv/www/wordpress/index.php
 
 
 RUN chmod +x /usr/bin/wp.sh

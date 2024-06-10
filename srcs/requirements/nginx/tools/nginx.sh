@@ -11,4 +11,4 @@ openssl req -newkey rsa:2048 -nodes -keyout $KEY -out $CSR -subj "/C=/ST=/L=/O=/
 openssl x509 -req -in $CSR -signkey $KEY -out $SSLPATH/myserver.crt
 
 
-nginx -g "daemon off;"
+exec nginx -g "daemon off;"

@@ -1,4 +1,4 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 RUN apt-get update && apt-get upgrade && apt-get install telnet -y && apt-get install net-tools -y && apt-get install vim -y && apt-get install mariadb-server -y && apt-get install mariadb-client
 
@@ -6,8 +6,6 @@ WORKDIR .
 
 COPY ./tools/mariadb.sh /usr/bin/mariadb.sh
 COPY ./tools/server.conf etc/mysql/mariadb.conf.d/50-server.cnf
-
-#COPY ./tools/mdb.init /mdb.init
 
 RUN chmod +x /usr/bin/mariadb.sh
 
@@ -19,5 +17,3 @@ RUN useradd nkush
 
 ENTRYPOINT ["./usr/bin/mariadb.sh"]
 #ENTRYPOINT ["tail", "-f"]
-#CMD ["mysqld", "--bind-address=0.0.0.0"]
-#ENTRYPOINT tail -f

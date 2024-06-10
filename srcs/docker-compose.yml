@@ -15,8 +15,9 @@ services:
     networks:
       - networng
     depends_on: 
+      #- wordpress
       wordpress:
-       condition: service_healthy
+        condition: service_healthy
 
     restart: always
 
@@ -35,8 +36,9 @@ services:
     ports:
       - "9000:9000"
     depends_on:
+      #- mariadb
       mariadb:
-        condition: service_healthy
+       condition: service_healthy
     restart: always
     healthcheck:
       test: ["CMD", "wp", "core", "is-installed", "--path=/var/www/html", "--allow-root"]
