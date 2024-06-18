@@ -5,9 +5,6 @@
 mkdir -p /run/php
 
 sed -i 's/listen = \/run\/php\/php7.4-fpm.sock/listen = 0.0.0.0:9000/g' /etc/php/7.4/fpm/pool.d/www.conf
- #sed -i 's/mysqli.default_host =/mysqli.default_host = mariadb_container/g' etc/php/7.4/fpm/php.ini
-#sed -i "s/;extension=pdo_mysql/extension=pdo_mysql/g" etc/php/7.4/fpm/php.ini
-
 
 file="/var/www/html/wp-config.php"
 
@@ -63,11 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 require_once ABSPATH . 'wp-settings.php';" >> /var/www/html/wp-config.php
 
 
-	#chown ndonaire /var/www/html/wordpress
-	#chown -R www-data:www-data /var/www/html/wordpress
-	wp core install --url=ndonaire.42.fr --title=ndonaire --admin_user=ndonaire --admin_password=strongpassword --admin_email=info@example.com --path='/var/www/html/' --allow-root
-	wp user create bob bob@example.com --role=author --path=/var/www/html/ --user_pass=cucu --allow-root > userInfo.txt
-
-#mkdir -p /run/php
+wp core install --url="$SITE_URL" --title=ndonaire_site --admin_user="$SITEA" --admin_password="$SITEAPSSWD" --admin_email="$SITEAMAIL" --path='/var/www/html/' --allow-root
+	wp user create "$SITE_USER" "$SITE_USERMAIL" --role=author --path=/var/www/html/ --user_pass="$SITE_USERPSSWD" --allow-root > userInfo.txt
 
 exec /usr/sbin/php-fpm7.4 -F

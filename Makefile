@@ -22,8 +22,8 @@ reset: rmallctnr rmallvol
 
 re: down build
 nginx:
-	docker exec -it nginx_container /bin/bash
+	docker exec -it nginx /bin/bash
 wordpress:
-	docker exec -it wordpress_container /bin/bash
+	docker exec -it wordpress /bin/bash
 mariadb:
-	docker exec -it mariadb_container /bin/bash
+	docker exec -it mariadb /bin/bash
